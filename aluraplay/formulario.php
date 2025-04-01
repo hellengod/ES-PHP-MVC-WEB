@@ -8,7 +8,7 @@ $video = [
     'url' => '',
     'titulo' => ''
 ];
-if ($id !== false) {
+if ($id !== false && $id !== null) {
     $stmt = $pdo->prepare('SELECT * FROM videos WHERE id=?;');
     $stmt->bindValue(1, $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -36,10 +36,10 @@ if ($id !== false) {
     <header>
 
         <nav class="cabecalho">
-            <a class="logo" href="./index.php"></a>
+            <a class="logo" href="./"></a>
 
             <div class="cabecalho__icones">
-                <a href="./enviar-video.html" class="cabecalho__videos"></a>
+                <a href="/novo-video" class="cabecalho__videos"></a>
                 <a href="../pages/login.html" class="cabecalho__sair">Sair</a>
             </div>
         </nav>
@@ -48,8 +48,7 @@ if ($id !== false) {
 
     <main class="container">
 
-        <form class="container__formulario"
-            action="<?= $id !== false ? 'editar-video.php?id=' . $id : '/novo-video.php' ?>" method="post">
+        <form class="container__formulario" method="post">
             <h2 class="formulario__titulo">Envie um vídeo!</h2>
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="url">Link embed</label>
@@ -60,8 +59,7 @@ if ($id !== false) {
 
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="titulo">Titulo do vídeo</label>
-                <input name="titulo" class="campo__escrita" 
-                value="<?= $video['title'] ?>" required
+                <input name="titulo" class="campo__escrita" value="<?= $video['title'] ?>" required
                     placeholder="Neste campo, dê o nome do vídeo" id='titulo' />
             </div>
 

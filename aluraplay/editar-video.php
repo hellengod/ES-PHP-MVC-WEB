@@ -6,16 +6,16 @@ $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 $titulo = filter_input(INPUT_POST, 'titulo');
 
 if ($url === false) {
-    header('Location: /index.php?sucesso=0');
+    header('Location: /?sucesso=0');
     exit();
 }
 
 if ($titulo === false) {
-    header('Location: /index.php?sucesso=0');
+    header('Location: /?sucesso=0');
     exit();
 }
-if ($id === false) {
-    header('Location: /index.php?sucesso=0');
+if ($id !== false && $id !== null) {
+    header('Location: /?sucesso=0');
     exit();
 }
 $sql = "UPDATE videos SET url= :url, title= :title WHERE id = :id;";
@@ -24,8 +24,8 @@ $stmt->bindValue(':url', $url);
 $stmt->bindValue(':title', $titulo);
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 if ($stmt->execute() === false) {
-    header('Location: index.php?sucesso=0');
+    header('Location: /?sucesso=0');
 } else {
-    header('Location: index.php?sucesso=1');
+    header('Location: /?sucesso=1');
 
 }
