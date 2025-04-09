@@ -22,11 +22,18 @@ $routes = require_once __DIR__ . '/../config/routes.php';
 $pathInfo = $_SERVER['PATH_INFO'] ?? '/';
 $httpmethod = $_SERVER['REQUEST_METHOD'];
 
+session_start();
+$isLoginRoute = $pathInfo === '/login';
+if (!array_key_exists('logado', $_SESSION) && !$isLoginRoute) {
+    header('Location: /login');
+    return;
+}
+
 $key = "$httpmethod|$pathInfo";
-if(array_key_exists($key, $routes)){
-$controllerClass = $routes["$httpmethod|$pathInfo"];
-$controller = new $controllerClass($videoRepository);
-}else{
+if (array_key_exists($key, $routes)) {
+    $controllerClass = $routes["$httpmethod|$pathInfo"];
+    $controller = new $controllerClass($videoRepository);
+} else {
     $controller = new Error404Controller;
 }
 $controller->processaRequisicao();
