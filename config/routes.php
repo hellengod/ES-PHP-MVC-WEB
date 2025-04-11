@@ -1,6 +1,6 @@
 <?php
 
-use Alura\Mvc\Controller\DeleteImageVideo;
+use Alura\Mvc\Controller\DeleteImageVideoController;
 use Alura\Mvc\Controller\DeleteVideoController;
 use Alura\Mvc\Controller\EditVideoController;
 use Alura\Mvc\Controller\LoginController;
@@ -19,5 +19,5 @@ return [
     'GET|/login' => LoginFormController::class,
     'POST|/login' => LoginController::class,
     'GET|/logout' => LogoutController::class,
-    'GET|/remover-img' => DeleteImageVideo::class
+    'GET|/remover-img' => DeleteImageVideoController::class
 ];
