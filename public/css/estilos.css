@@ -34,6 +34,10 @@ body {
     z-index: 2;
 }
 
+body > header{
+    height: 80px;
+}
+
 .logo {
     background-image: url(../img/cabecalho/Logo.png);
     background-repeat: no-repeat;
@@ -108,4 +112,9 @@ body {
         height: 100vh;
     }
 
+}
+
+.formulario__titulo.erro{
+    color: red;
+    margin-top: 1rem;
 }

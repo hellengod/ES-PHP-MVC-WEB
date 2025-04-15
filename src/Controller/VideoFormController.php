@@ -18,7 +18,7 @@ class VideoFormController extends ControllerWithHtml implements Controller
         if ($id !== false && $id !== null) {
             $video = $this->videoRepository->find($id);
         }
-        $this->renderTamplate('video-form', ['video' => $video]);
+        echo $this->renderTamplate('video-form', ['video' => $video]);
 
     }
 

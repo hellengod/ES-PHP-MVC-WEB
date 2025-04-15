@@ -13,6 +13,6 @@ class VideoListController extends ControllerWithHtml implements Controller
     {
         $videoList = $this->videoRepository->all();
 
-        $this->renderTamplate('video-list', ['videoList' => $videoList]);
+        echo $this->renderTamplate('video-list', ['videoList' => $videoList]);
     }
 }

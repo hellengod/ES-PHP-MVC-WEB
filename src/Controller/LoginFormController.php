@@ -11,7 +11,7 @@ class LoginFormController extends ControllerWithHtml implements Controller
             return;
         }
 
-        $this->renderTamplate('login-form');
+        echo $this->renderTamplate('login-form');
     }
 
 }
