@@ -7,14 +7,15 @@ use Nyholm\Psr7\Response;
 use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class VideoListController implements Controller
+class VideoListController implements RequestHandlerInterface
 {
     use HtmlRendererTrait;
     public function __construct(private VideoRepository $videoRepository)
     {
     }
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $videoList = $this->videoRepository->all();
         $html = $this->renderTemplate('video-list', ['videoList' => $videoList]);

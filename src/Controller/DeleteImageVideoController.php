@@ -8,14 +8,15 @@ use Alura\Mvc\Repository\VideoRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class DeleteImageVideoController implements Controller
+class DeleteImageVideoController implements RequestHandlerInterface
 {
     use FlashMessageTraits;
     public function __construct(private VideoRepository $videoRepository)
     {
     }
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
         $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);

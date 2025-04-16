@@ -6,7 +6,8 @@ use Nyholm\Psr7\Response;
 use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-class LoginController implements Controller
+use Psr\Http\Server\RequestHandlerInterface;
+class LoginController implements RequestHandlerInterface
 {
     use FlashMessageTraits;
     private PDO $pdo;
@@ -15,7 +16,7 @@ class LoginController implements Controller
         $dbPath = __DIR__ . '/../../banco.sqlite';
         $this->pdo = new PDO("sqlite:$dbPath");
     }
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parseBody = $request->getParsedBody();
 
