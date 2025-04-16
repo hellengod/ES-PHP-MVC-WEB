@@ -22,14 +22,14 @@ class EditVideoController implements Controller
 
     public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
-        $requestBody = $request->getParsedBody();
+        $requestBody = $request->getQueryParams();
 
         $id = filter_var($requestBody['id'], FILTER_VALIDATE_INT);
         if ($id === false || $id === null) {
             $this->addErrorMessage('Id inválido');
             return new Response(302, ['Location' => '/']);
         }
-
+        $requestBody = $request->getParsedBody();
         $url = filter_var($requestBody['url'], FILTER_VALIDATE_URL);
         if ($url === false) {
             $this->addErrorMessage('URL inválida');

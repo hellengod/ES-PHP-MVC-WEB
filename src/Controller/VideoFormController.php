@@ -17,7 +17,7 @@ class VideoFormController implements Controller
 
     public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
-        $parseBody = $request->getParsedBody();
+        $parseBody = $request->getQueryParams();
         $id = filter_var($parseBody['id'], FILTER_VALIDATE_INT);
         /** @var ?Video $video */
         $video = null;
