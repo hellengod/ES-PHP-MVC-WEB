@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Controller;
 
+use Alura\Mvc\Helper\FlashMessageTraits;
 use Alura\Mvc\Repository\VideoRepository;
 
 class DeleteImageVideoController implements Controller
 {
+    use FlashMessageTraits;
     public function __construct(private VideoRepository $videoRepository)
     {
     }
@@ -14,14 +16,16 @@ class DeleteImageVideoController implements Controller
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($id === null || $id === false) {
-            header('Location: /?sucesso=0');
+            $this->addErrorMessage('Erro ao deletar video');
+            header('Location: /');
             return;
         }
         $success = $this->videoRepository->removeImg($id);
         if ($success === false) {
-            header('Location: /?sucesso=0');
+            $this->addErrorMessage('Erro ao deletar video');
+            header('Location: /');
         } else {
-            header('Location: /?sucesso=1');
+            header('Location: /');
         }
 
     }

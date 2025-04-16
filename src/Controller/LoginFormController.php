@@ -1,8 +1,11 @@
 <?php
 namespace Alura\Mvc\Controller;
 
-class LoginFormController extends ControllerWithHtml implements Controller
+use Alura\Mvc\Helper\HtmlRendererTrait;
+
+class LoginFormController implements Controller
 {
+    use HtmlRendererTrait;
     public function processaRequisicao(): void
     {
 
