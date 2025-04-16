@@ -5,7 +5,7 @@ abstract class ControllerWithHtml implements Controller
 {
 
     private const TEMPLATE_PATH = __DIR__ . '/../../View/';
-    protected function renderTamplate(string $templateName, array $context = [])
+    protected function renderTemplate(string $templateName, array $context = [])
     {
 
         extract($context);
