@@ -16,7 +16,7 @@ class NewJsonVideoController implements Controller
     }
     public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
-        $request = file_get_contents('php:\\input');
+        $request = $request->getBody()->getContents();
         $videoData = json_decode($request, true);
         $video = new Video($videoData['url'], $videoData['title']);
         $this->videoRepository->add($video);
