@@ -11,6 +11,7 @@ class ComposerStaticInitf88c5f177dbc0a283bf791e8521553b7
         array (
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
         ),
         'N' => 
         array (
@@ -32,6 +33,10 @@ class ComposerStaticInitf88c5f177dbc0a283bf791e8521553b7
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
         'Nyholm\\Psr7\\' => 
         array (
