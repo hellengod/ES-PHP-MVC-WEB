@@ -18,7 +18,7 @@ $pdo = new PDO("sqlite:$dbPath");
 $videoRepository = new VideoRepository($pdo);
 
 $routes = require_once __DIR__ . '/../config/routes.php';
-
+$dependencyContainer = require_once  __DIR__ . '/../config/di.php';
 $pathInfo = $_SERVER['PATH_INFO'] ?? '/';
 $httpmethod = $_SERVER['REQUEST_METHOD'];
 
@@ -33,7 +33,7 @@ if (!array_key_exists('logado', $_SESSION) && !$isLoginRoute) {
 $key = "$httpmethod|$pathInfo";
 if (array_key_exists($key, $routes)) {
     $controllerClass = $routes["$httpmethod|$pathInfo"];
-    $controller = new $controllerClass($videoRepository);
+    $controller = $dependencyContainer->get($controllerClass);
 } else {
     $controller = new Error404Controller;
 }
