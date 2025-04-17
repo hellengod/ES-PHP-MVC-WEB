@@ -1,6 +1,4 @@
-<?php
-require_once __DIR__ . '/inicio-html.php'; ?>
-
+<?php $this->layout('layout'); ?>
 <ul class="videos__container" alt="videos alura">
     <?php
     foreach ($videoList as $video):
@@ -33,4 +31,3 @@ require_once __DIR__ . '/inicio-html.php'; ?>
     endforeach;
     ?>
 </ul>
-<?php require_once __DIR__ . '/fim-html.php'; ?>

@@ -1,5 +1,6 @@
-<?php
-require_once __DIR__ . '/inicio-html.php';
+<?php $this->layout('layout');
+
+
 /** @var \Alura\Mvc\Entity\Video|null $video */
 
 ?>
@@ -30,4 +31,3 @@ require_once __DIR__ . '/inicio-html.php';
     </form>
 
 </main>
-<?php require_once __DIR__ . '/fim-html.php'; ?>

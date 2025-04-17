@@ -2,6 +2,7 @@
 
 use Alura\Mvc\Repository\VideoRepository;
 use DI\ContainerBuilder;
+use League\Plates\Engine;
 
 $builder = new ContainerBuilder();
 $builder->addDefinitions([
@@ -9,6 +10,10 @@ $builder->addDefinitions([
         $dbPath = __DIR__ . '/../banco.sqlite';
         return new PDO("sqlite:$dbPath");
     },
+    Engine::class => function(){
+        $templatesPath = __DIR__ . '/../View';
+        return new Engine($templatesPath);
+    }
 ]);
 
 $container = $builder->build();
